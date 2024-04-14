@@ -60,7 +60,8 @@ public class EarthquakeFrame extends JFrame {
                             .observeOn(SwingSchedulers.edt())
                             //.observeOn(AndroidSchedulers.mainThread()) // Instead use this on Android only
                             .subscribe(
-                                    (response) -> {currentResponse = response; handleResponse(response);},
+                                    (response) -> { currentResponse = response;
+                                        handleResponse(response); },
                                     Throwable::printStackTrace);
                 }
             }
@@ -77,7 +78,8 @@ public class EarthquakeFrame extends JFrame {
                             .observeOn(SwingSchedulers.edt())
                             //.observeOn(AndroidSchedulers.mainThread()) // Instead use this on Android only
                             .subscribe(
-                                    (response) -> {currentResponse = response; handleResponse(response);},
+                                    (response) -> { currentResponse = response;
+                                        handleResponse(response); },
                                     Throwable::printStackTrace);
                 }
             }
