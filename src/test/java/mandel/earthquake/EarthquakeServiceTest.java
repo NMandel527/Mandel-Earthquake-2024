@@ -15,7 +15,23 @@ class EarthquakeServiceTest
         EarthquakeService service = new EarthquakeServiceFactory().getService();
 
         //when
-        FeatureCollection collection = service.oneHour().blockingGet();
+        FeatureCollection collection = service.oneHour().blockingGet(); //only use blockingGet in tests
+
+        //then
+        Properties properties = collection.features[0].properties;
+        assertNotNull(properties.place);
+        assertNotEquals(0, properties.mag);
+        assertNotEquals(0, properties.time);
+    }
+
+    @Test
+    void oneMonth()
+    {
+        //given
+        EarthquakeService service = new EarthquakeServiceFactory().getService();
+
+        //when
+        FeatureCollection collection = service.oneMonth().blockingGet(); //only use blockingGet in tests
 
         //then
         Properties properties = collection.features[0].properties;
