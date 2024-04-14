@@ -14,6 +14,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class EarthquakeFrame extends JFrame {
 
@@ -92,12 +94,13 @@ public class EarthquakeFrame extends JFrame {
                 Feature feature = currentResponse.features[earthquakeList.getSelectedIndex()];
                 double lng = feature.geometry.coordinates[0];
                 double lat = feature.geometry.coordinates[1];
-                Runtime rt = Runtime.getRuntime();
-                String url = "http://maps.google.com/maps?q= " + lat + ", " + lng;
-                try {
-                    rt.exec("rundll32 url.dll,FileProtocolHandler " + url);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                    try {
+                        Desktop.getDesktop().browse(
+                                new URI("https://www.google.com/maps/search/?api=1&query=" + lat + "," + lng));
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
         });

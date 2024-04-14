@@ -1,6 +1,6 @@
 # Earthquake Service
 
-This program shows the most recent 1.0 scale earthquakes.
+This program shows the most recent earthquakes.
 The user has an option to choose whether they want to see earthquakes 
 from the last hour or from the last 30 days.
 When a location is clicked, it automatically takes the user to the exact coordinates
